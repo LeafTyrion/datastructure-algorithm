@@ -17,6 +17,7 @@ minStack.min();   --> 返回 -2.
 
 ##### 辅助栈解法
 
+新建一个辅助栈 temp，用于存储 stack 中 push 的较小的元素
 
 
 ```java

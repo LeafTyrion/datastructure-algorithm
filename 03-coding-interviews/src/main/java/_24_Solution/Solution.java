@@ -30,35 +30,33 @@ public class Solution {
 //    }
 
     //递归解法
-    public ListNode reverseList(ListNode head) {
-        recur(head);
-        return head;
-    }
-
-    void recur(ListNode head) {
-        if (head == null)
-            return;
-        recur(head.next);
-        head.next = head;
-    }
+//    public ListNode reverseList(ListNode head) {
+//        return recur(head, null);
+//    }
+//
+//    private ListNode recur(ListNode cur, ListNode pre) {
+//        if (cur == null)
+//            return pre;
+//        ListNode res = recur(cur.next, cur);
+//        cur.next = pre;
+//        return res;
+//    }
 
 
     //辅助指针解法
-//    public ListNode reverseList(ListNode head) {
-//
-//        ListNode curNode = head;
-//        ListNode preNode = null;
-//
-//        while (curNode != null) {
-//
-//            curNode.next = preNode;
-//            preNode = curNode;
-//            curNode = curNode.next;
-//
-//        }
-//
-//        return head;
-//    }
+    public ListNode reverseList(ListNode head) {
+
+        ListNode cur = head;
+        ListNode pre = null;
+
+        while (cur != null) {
+            ListNode temp = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = temp;
+        }
+        return pre;
+    }
 
 }
 

@@ -11,7 +11,7 @@
 
 0 <= s 的长度 <= 10000
 
-##### replace()
+##### replace() 方法
 
 使用 String 的 replace() 函数
 
@@ -26,5 +26,7 @@ public class Solution {
 时间复杂度 O(N)：一次遍历字符数组
 
 空间复杂度 O(1)：使用常数级的空间
+
+##### 遍历添加
 
 

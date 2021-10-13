@@ -1,8 +1,5 @@
 package _03_Solution;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * @author YeYaqiao
  * 剑指 Offer 03. 数组中重复的数字
@@ -39,12 +36,17 @@ public class Solution {
         int i = 0;
         while (i < nums.length) {
 
-            if (nums[i] == i){
+            //若当前索引值和元素值相等，则说明元素在正确的位置，则继续遍历下一个元素
+            if (nums[i] == i) {
                 i++;
                 continue;
             }
+
+            //若当前元素不在正确的位置上，但是其正确的位置以及放置了正确的值，则说明这个元素有重复
             if (nums[nums[i]] == nums[i])
                 return nums[i];
+
+            //交换当前元素到其正确的索引位置上
             int temp = nums[i];
             nums[i] = nums[temp];
             nums[temp] = temp;

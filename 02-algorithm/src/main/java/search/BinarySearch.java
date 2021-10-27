@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 /**
  * @author YeYaqiao
- * 二分查找（适用于排好序的顺序存储）
- * 时间复杂度：O(logN)
+ * 二分查找（适用于排好序的顺序存储结构）
+ * 平均时间复杂度：O(logN)
  * 空间复杂度：O(1)
  */
 public class BinarySearch {

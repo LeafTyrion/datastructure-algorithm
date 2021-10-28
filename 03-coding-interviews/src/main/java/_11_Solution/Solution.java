@@ -21,22 +21,16 @@ public class Solution {
         int left = 0;
         int right = numbers.length - 1;
         while (left < right) {
-            int m = left - ( left-right) / 2;
-            if (numbers[m]>numbers[left]){
-                left=m+1;
-            }else if (numbers[m]<numbers[left]){
-                right=m;
-            }else {
-
-                int x = left;
-                for(int k = left + 1; k < right; k++) {
-                    if(numbers[k] < numbers[x]) x = k;
-                }
-                return numbers[x];
-
+            int mid = left + (right - left) / 2;
+            if (numbers[mid] > numbers[right]) {
+                left = mid + 1;
+            } else if (numbers[mid] < numbers[right]) {
+                right = mid;
+            } else {
+                right--;
             }
         }
         return numbers[left];
-
     }
+
 }

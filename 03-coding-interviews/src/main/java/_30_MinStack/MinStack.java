@@ -20,21 +20,18 @@ public class MinStack {
     }
 
     public void push(int x) {
-        stack.push(x);
-        if (temp.isEmpty() || temp.peek() >= x)
-            temp.push(x);
+
     }
 
     public void pop() {
-        if (stack.pop().equals(temp.peek()))
-            temp.pop();
+
     }
 
     public int top() {
-        return stack.peek();
+
     }
 
     public int min() {
-        return temp.peek();
+
     }
 }

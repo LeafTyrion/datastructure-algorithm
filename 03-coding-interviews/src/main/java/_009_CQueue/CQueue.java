@@ -1,4 +1,4 @@
-package _09_CQueue;
+package _009_CQueue;
 
 import java.util.Stack;
 
@@ -21,7 +21,6 @@ public class CQueue {
     }
 
     public int deleteHead() {
-
         if (out.isEmpty()) {
             while (!in.isEmpty()) {
                 out.push(in.pop());

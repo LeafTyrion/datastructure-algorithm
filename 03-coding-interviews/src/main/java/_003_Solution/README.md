@@ -24,7 +24,7 @@
 2. 若循环结束尚未返回，则直接返回 -1
 
 ```java
-public class Solution {
+public class _704_Solution.Solution {
     public int findRepeatNumber(int[] nums) {
 
         for (int i = 0; i < nums.length; i++) {
@@ -53,7 +53,7 @@ public class Solution {
 3. 若遍历结束尚未返回，则返回 -1
 
 ```java
-public class Solution {
+public class _704_Solution.Solution {
     
    //    利用 HashSet
    public int findRepeatNumber(int[] nums) {
@@ -87,7 +87,7 @@ public class Solution {
 2. 若遍历完尚未返回，则返回 -1
 
 ```java
-public class Solution {
+public class _704_Solution.Solution {
     
     //    原地交换
     public static int findRepeatNumber(int[] nums) {

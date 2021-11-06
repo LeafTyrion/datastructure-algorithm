@@ -18,7 +18,7 @@
  *     ListNode(int x) { val = x; }
  * }
  */
-class _003_Solution.Solution {
+class Solution {
     public ListNode reverseList(ListNode head) {
 
         ListNode currentNode = head;

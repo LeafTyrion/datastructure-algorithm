@@ -1,4 +1,4 @@
-package _30_MinStack;
+package _030_MinStack;
 
 import java.util.Stack;
 

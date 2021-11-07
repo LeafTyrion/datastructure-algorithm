@@ -18,7 +18,11 @@
  *     ListNode(int x) { val = x; }
  * }
  */
+<<<<<<< HEAD:03-coding-interviews/src/main/java/_24_Solution/README.md
 class _003_Solution._704_Solution.Solution {
+=======
+class Solution {
+>>>>>>> 7812ddc6801f951ec96d4404b4c3ff70c2b20a58:03-coding-interviews/src/main/java/_024_Solution/README.md
     public ListNode reverseList(ListNode head) {
 
         ListNode currentNode = head;

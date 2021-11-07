@@ -10,7 +10,11 @@
 2. 创建大小为栈大小的数组，然后执行出栈操作，并将值存入数组
 
 ```java
+<<<<<<< HEAD:03-coding-interviews/src/main/java/_06_Solution/README.md
 class _003_Solution._704_Solution.Solution {
+=======
+class Solution {
+>>>>>>> 7812ddc6801f951ec96d4404b4c3ff70c2b20a58:03-coding-interviews/src/main/java/_006_Solution/README.md
     public int[] reversePrint(ListNode head) {
 
         Stack<Integer> stack = new Stack<>();

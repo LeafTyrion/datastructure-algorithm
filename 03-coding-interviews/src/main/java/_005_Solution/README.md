@@ -16,11 +16,7 @@
 使用 String 的 replace() 函数
 
 ```java
-<<<<<<< HEAD
-public class _003_Solution._704_Solution.Solution {
-=======
 public class Solution {
->>>>>>> 7812ddc6801f951ec96d4404b4c3ff70c2b20a58
    public String replaceSpace(String s) {
       return s.replace(" ", "%20");
    }

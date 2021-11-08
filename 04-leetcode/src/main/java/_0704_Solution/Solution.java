@@ -1,4 +1,4 @@
-package _704_Solution;
+package _0704_Solution;
 
 /**
  * @author YeYaqiao

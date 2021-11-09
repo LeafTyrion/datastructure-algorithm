@@ -6,17 +6,26 @@ package _53_I_Solution;
  */
 public class Solution {
 
-    //暴力遍历统计
-//    public int search(int[] nums, int target) {
-//
-//        int result = 0;
-//
-//        for (int num : nums) {
-//            if (num == target)
-//                result++;
-//        }
-//        return result;
-//    }
+    public int search(int[] nums, int target) {
+        return helper(nums, target) - helper(nums, target - 1);
+    }
+
+    //用于查询指定数字的右边界外索引
+    private int helper(int[] nums, int target) {
+        int low = 0;
+        int mid;
+        int high = nums.length - 1;
+
+        while (low <= high) {
+            mid = low + (high - low) / 2;
+            if (nums[mid] <= target)
+                low = mid + 1;
+            else
+                high = mid - 1;
+        }
+        return low;
+    }
+
 
     //排序数组的查找一般涉及 二分法
 //    public int search(int[] nums, int target) {
@@ -80,25 +89,17 @@ public class Solution {
 //        return -1;
 //    }
 
-    public int search(int[] nums, int target) {
-        return helper(nums, target) - helper(nums, target - 1);
-    }
-
-    //用于查询指定数字的右边界外索引
-    private int helper(int[] nums, int target) {
-        int low = 0;
-        int mid;
-        int high = nums.length - 1;
-
-        while (low <= high) {
-            mid = low + (high - low) / 2;
-            if (nums[mid] <= target)
-                low = mid + 1;
-            else
-                high = mid - 1;
-        }
-        return low;
-    }
+    //暴力遍历统计
+//    public int search(int[] nums, int target) {
+//
+//        int result = 0;
+//
+//        for (int num : nums) {
+//            if (num == target)
+//                result++;
+//        }
+//        return result;
+//    }
 
 
 }

@@ -6,22 +6,20 @@ package _004_Solution;
  */
 public class Solution {
 
+    //二维数组依次排除行列法
     public boolean findNumberIn2DArray(int[][] matrix, int target) {
-        int i = 0;
-        int j = matrix.length - 1;
-        while (i < matrix[0].length && j > 0) {
-            if (matrix[i][j] > target) {
-                j--;
-            } else if (matrix[i][j] < target) {
-                i++;
-            } else
-                return true;
+        if (matrix.length > 0 && matrix[0].length > 0) {
+            int row = 0;
+            int column = matrix[0].length - 1;
+            while (row < matrix.length && column >= 0) {
+                if (matrix[row][column] > target)
+                    column--;
+                else if (matrix[row][column] < target)
+                    row++;
+                else return true;
+            }
         }
         return false;
     }
-
-    public static void main(String[] args) {
-        Solution solution = new Solution();
-        solution.findNumberIn2DArray(new int[][]{{1, 4, 7, 11, 15}, {2, 5, 8, 12, 19}, {3, 6, 9, 16, 22}, {10, 13, 14, 17, 24}, {18, 21, 23, 26, 30}}, 5);
-    }
 }
+

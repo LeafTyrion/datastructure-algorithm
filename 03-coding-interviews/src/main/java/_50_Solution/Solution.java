@@ -11,14 +11,13 @@ public class Solution {
 
     //暴力法
     public char firstUniqChar(String s) {
-        Map<Character, Integer> map = new HashMap<>();
+        Map<Character, Boolean> map = new HashMap<>();
         for (int i = 0; i < s.length(); i++) {
             Character character = s.charAt(i);
-            Integer integer = map.get(character);
-            map.put(character, integer == null ? 1 : ++integer);
+            map.put(character, map.containsKey(character));
         }
         for (int i = 0; i < s.length(); i++) {
-            if (map.get(s.charAt(i)) == 1)
+            if (map.get(s.charAt(i)) == false)
                 return s.charAt(i);
         }
         return ' ';

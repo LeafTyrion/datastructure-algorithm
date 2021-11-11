@@ -1,9 +1,6 @@
-package _32_Solution;
+package _032_II_Solution;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * @author YeYaqiao

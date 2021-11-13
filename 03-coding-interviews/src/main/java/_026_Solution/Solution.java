@@ -7,27 +7,28 @@ package _026_Solution;
  */
 public class Solution {
     public boolean isSubStructure(TreeNode A, TreeNode B) {
-        //若 A树 或 B树 为空，则无子结构存在
         if (A == null || B == null)
             return false;
-        //判断 A树 和 B树当前节点的值是否相等
-        //分别递归比较他们的左边的子树和右边的子树是否相等
-        if (A.val == B.val && (recur(A.left, B.left) && recur(A.right, B.right)))
+        //若找到疑似为的子结构，则必定有A的当前节点和B的根节点相同，
+        //则可以进一步判断A的子节点内容是否和B的子节点内容是否相同
+        if (A.val == B.val && recur(A.left, B.left) && recur(A.right, B.right))
             return true;
-        //若树的同级节点不相等，则将A树的子节点与B树的根节点进行递归比较
+        //若上一步疑似的子结构被推翻，子继续遍历A树寻找疑似根节点
         return isSubStructure(A.left, B) || isSubStructure(A.right, B);
     }
 
-    //子树的递归
+    //判断子树内容是否相等
     private boolean recur(TreeNode A, TreeNode B) {
+        //若B为null，则表示B遍历完成，疑似子结构被证实
         if (B == null)
             return true;
-
+        //若A为null，则表示A遍历完成
+        //但此时B还未遍历完成，所以当前判断的疑似子结构被否定掉
         if (A == null)
             return false;
-
-        if (A.val == B.val)
-            return recur(A.left, B.left) && recur(A.right, B.right);
+        //若A和B都未遍历完成，则进一步比较A和B的值以及其子树的内容
+        if (A.val == B.val && recur(A.left, B.left) && recur(A.right, B.right))
+            return true;
         else
             return false;
     }

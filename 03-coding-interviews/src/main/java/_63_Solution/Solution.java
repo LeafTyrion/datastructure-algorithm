@@ -16,6 +16,20 @@ public class Solution {
         return profit;
     }
 
+    //动态规划，未优化
+//    public int maxProfit(int prices[]) {
+//        int minPrice = Integer.MAX_VALUE;
+//        int profit = 0;
+//        for (int price : prices) {
+//            if (price < minPrice)
+//                minPrice = price;
+//            int temp = price - minPrice;
+//            if (temp > profit)
+//                profit = temp;
+//        }
+//        return profit;
+//    }
+
     //暴力法
 //    public int maxProfit(int[] prices) {
 //        int max = 0;

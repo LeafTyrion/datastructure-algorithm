@@ -10,7 +10,9 @@ public class Solution {
     public int maxProfit(int[] prices) {
         int cost = Integer.MAX_VALUE, profit = 0;
         for (int price : prices) {
+            //每次都获取之前最低价来获取当天的最大利润
             cost = Math.min(cost, price);
+            //保存利润最大的一次交易
             profit = Math.max(profit, price - cost);
         }
         return profit;

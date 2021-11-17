@@ -7,10 +7,14 @@ package _42_Solution;
 public class Solution {
 
     //动态规划 优化
+    //f(i)=Max{f(i-1)+nums[i], nums[i]}
     public int maxSubArray(int[] nums) {
         int pre = 0, maxAns = nums[0];
         for (int x : nums) {
+            //当前位置的原始到之前所有原始的和大于当前元素的话，当前子序列暂时还处于递增状态
+            //若当前到之前元素的和还没有当前元素大，则证明之前的元素和为负数，则可以抛弃，从当前元素开始计算和 pre
             pre = Math.max(pre + x, x);
+            //判断将最大的和赋值给 maxAns
             maxAns = Math.max(maxAns, pre);
         }
         return maxAns;

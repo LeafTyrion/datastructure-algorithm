@@ -7,19 +7,27 @@ package _42_Solution;
 public class Solution {
 
     //动态规划 优化
-//    public int maxSubArray(int[] nums) {
-//        int pre = 0, maxAns = nums[0];
-//        for (int x : nums) {
-//            pre = Math.max(pre + x, x);
-//            maxAns = Math.max(maxAns, pre);
-//        }
-//        return maxAns;
-//    }
+    public int maxSubArray(int[] nums) {
+        int pre = 0, maxAns = nums[0];
+        for (int x : nums) {
+            pre = Math.max(pre + x, x);
+            maxAns = Math.max(maxAns, pre);
+        }
+        return maxAns;
+    }
 
     //动态规划 未优化
-    public int maxSubArray(int[] nums) {
-
-    }
+//    public int maxSubArray(int[] nums) {
+//        int pre = 0;
+//        int result = nums[0];
+//
+//        for (int num : nums) {
+//            pre = Math.max(pre + num, num);
+//            if (pre > result)
+//                result = pre;
+//        }
+//        return result;
+//    }
 
     //分治算法，不会
 //    static class Status {

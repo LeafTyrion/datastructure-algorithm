@@ -11,13 +11,13 @@ public class Solution {
 
     //动态规划 + 哈希表
     public int lengthOfLongestSubstring(String s) {
-        Map<Character, Integer> dic = new HashMap<>();
+        Map<Character, Integer> map = new HashMap<>();
         int res = 0, tmp = 0;
-        for (int j = 0; j < s.length(); j++) {
-            int i = dic.getOrDefault(s.charAt(j), -1); // 获取索引 i
-            dic.put(s.charAt(j), j); // 更新哈希表
-            tmp = tmp < j - i ? tmp + 1 : j - i; // dp[j - 1] -> dp[j]
-            res = Math.max(res, tmp); // max(dp[j - 1], dp[j])
+        for (int i = 0; i < s.length(); i++) {
+            int index = map.getOrDefault(s.charAt(i), -1); // 获取索引 index
+            map.put(s.charAt(i), i); // 更新哈希表
+            tmp = tmp < i - index ? tmp + 1 : i - index; // dp[i - 1] -> dp[i]
+            res = Math.max(res, tmp); // max(dp[i - 1], dp[i])
         }
         return res;
     }

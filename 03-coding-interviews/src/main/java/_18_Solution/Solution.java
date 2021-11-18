@@ -6,7 +6,7 @@ package _18_Solution;
  */
 public class Solution {
 
-    //遍历法
+    //双指针
     public ListNode deleteNode(ListNode head, int val) {
         //特殊情况，当头节点为要查找的值，则直接放回下一个节点即可
         if (head.val == val)
@@ -27,6 +27,20 @@ public class Solution {
         }
         return head;
     }
+
+    //单指针
+//    public ListNode deleteNode(ListNode head, int val) {
+//        if (head.val == val)
+//            return head.next;
+//        ListNode pointer = head;
+//        //查询当前节点的下一个是否是目标值
+//        while (pointer.next != null && pointer.next.val != val)
+//            pointer = pointer.next;
+//        //若当前节点的下一个不为空，则将当前节点的下一个指向下下个节点即可
+//        if (pointer.next != null)
+//            pointer.next = pointer.next.next;
+//        return head;
+//    }
 }
 
 class ListNode {

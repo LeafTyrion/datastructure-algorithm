@@ -11,9 +11,9 @@ import java.util.Arrays;
  * 空间复杂度：O(1)
  * 稳定性：稳定
  */
-public class _01_BubbleSort {
+public class BubbleSort {
 
-    public static void sort(int[] array) {
+    public void sort(int[] array) {
 
         for (int i = 0; i < array.length - 1; i++) {
             //设置标记表示是否发生交换
@@ -34,8 +34,9 @@ public class _01_BubbleSort {
     }
 
     public static void main(String[] args) {
+        BubbleSort sort = new BubbleSort();
         int[] array = new int[]{1, 5, 3, 2, 5, 1, 9, 8, 7, 0};
-        sort(array);
+        sort.sort(array);
         System.out.println(Arrays.toString(array));
     }
 }

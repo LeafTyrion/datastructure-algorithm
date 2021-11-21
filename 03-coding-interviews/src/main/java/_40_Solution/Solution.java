@@ -9,12 +9,12 @@ import java.util.Arrays;
 public class Solution {
 
     //利用 Arrays.sort() API
-//    public int[] getLeastNumbers(int[] arr, int k) {
-//        if (arr.length == 0)
-//            return new int[]{};
-//        Arrays.sort(arr);
-//        int[] result = new int[k];
-//        System.arraycopy(arr, 0, result, 0, k);
-//        return result;
-//    }
+    public int[] getLeastNumbers(int[] arr, int k) {
+        if (arr.length == 0)
+            return new int[]{};
+        Arrays.sort(arr);
+        int[] result = new int[k];
+        System.arraycopy(arr, 0, result, 0, k);
+        return result;
+    }
 }

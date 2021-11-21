@@ -24,4 +24,4 @@ public class Solution {
         board[i][j] = word[k];
         return res;
     }
-}def
+}

@@ -21,9 +21,11 @@ public class BubbleSort {
             //内层循环将较大的值排在数组后面
             for (int j = 0; j < array.length - 1 - i; j++) {
                 if (array[j] > array[j + 1]) {
+                    //若当前元素比其后面一个元素大，则交换
                     int temp = array[j + 1];
                     array[j + 1] = array[j];
                     array[j] = temp;
+                    //发生交换以后，说明这个数组肯定不是个排序数组了
                     isSwap = true;
                 }
             }

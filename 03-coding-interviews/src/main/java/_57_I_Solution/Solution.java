@@ -1,6 +1,4 @@
-package _57_Solution;
-
-import java.util.HashSet;
+package _57_I_Solution;
 
 /**
  * @author YeYaqiao

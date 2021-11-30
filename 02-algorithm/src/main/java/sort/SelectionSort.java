@@ -11,7 +11,7 @@ import java.util.Arrays;
  * 空间复杂度：O(1)
  * 稳定性：稳定
  */
-public class _02_SelectionSort {
+public class SelectionSort {
 
 
     public static void sort(int[] array) {

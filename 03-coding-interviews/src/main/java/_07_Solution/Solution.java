@@ -43,7 +43,7 @@ public class Solution {
         int partition = map.get(preorder[rootIndex]);
 
         //在先序遍历中，当前树的根节点索引+1，则是它左子树的根节点的索引
-        //partition - leftIndex + 1 表示左子树的长度
+        //partition - leftIndex + 1 表示左子树的长度（对于先序遍历，当前根节点和右节点中间相隔了左子树的节点个数）
         //先序遍历中的根节点索引+左子树的长度=右子树的根节点索引
         node.left = recur(rootIndex + 1, leftIndex, partition - 1);
         node.right = recur(rootIndex + partition - leftIndex + 1, partition + 1, rightIndex);

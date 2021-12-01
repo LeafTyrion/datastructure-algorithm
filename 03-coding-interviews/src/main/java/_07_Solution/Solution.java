@@ -8,8 +8,7 @@ import java.util.Map;
  * 剑指 Offer 07. 重建二叉树
  */
 public class Solution {
-    //前序遍历 3 9 2 1 7
-    //中序遍历 9 3 1 2 7
+
 
     //前序遍历可以确定一棵树的根节点
     //中序遍历可以根据根节点区分去左子树和右子树
@@ -18,6 +17,8 @@ public class Solution {
     //映射中序遍历以便通过根节点获取左,右子树
     Map<Integer, Integer> map = new HashMap<>();
 
+    //前序遍历 3 9 2 1 7
+    //中序遍历 9 3 1 2 7
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         this.preorder = preorder;
         for (int i = 0; i < inorder.length; i++) {
@@ -25,7 +26,7 @@ public class Solution {
         }
 
         //递归入口,传入当前根节点索引(从前序遍历获取)
-        //当前树的根节点索引，左边界索引，右边界索引
+        //当前树的先序遍历的根节点索引，以及其中序遍历的左边界索引，右边界索引
         return recur(0, 0, preorder.length - 1);
     }
 

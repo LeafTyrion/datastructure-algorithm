@@ -15,7 +15,8 @@ public class Solution {
         //倒推法，当只剩一个数字时，他的位置索引为0
         //所以他上一轮的位置为 (0+m)%数字的长度，之后的以此类推
         int index = 0;
-        for (int i = 1; i <= n; i++) {
+        //当只剩一个数字时，index 肯定为 0，所以可以直接从 2 开始计算
+        for (int i = 2; i <= n; i++) {
             //i为当前数组的长度
             index = (index + m) % i;
         }

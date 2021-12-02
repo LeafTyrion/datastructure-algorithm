@@ -12,8 +12,9 @@ public class Solution {
     //一共n个数字，每次都删除第m个数字
     //约瑟夫环，动态规划
     public int lastRemaining(int n, int m) {
-        //倒推法，当只剩一个数字时，他的位置索引为0
-        //所以他上一轮的位置为 (0+m)%数字的长度，之后的以此类推
+        //倒推法，当只剩一个数字时，他的位置索引为index=0
+        //倒数第二轮的位置为 index=(0+m)%2
+        // 之后的以此类推
         int index = 0;
         //当只剩一个数字时，index 肯定为 0，所以可以直接从 2 开始计算
         for (int i = 2; i <= n; i++) {

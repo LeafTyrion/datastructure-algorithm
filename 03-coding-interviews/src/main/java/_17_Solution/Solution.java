@@ -7,7 +7,7 @@ package _17_Solution;
  */
 public class Solution {
 
-    //当数字过大时需要使用字符串来表示
+    //当数字过大时需要使用字符串来表示，不会啊
     int[] res;
     int nine = 0, count = 0, start, n;
     char[] num, loop = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
@@ -18,11 +18,14 @@ public class Solution {
         res = new int[(int) Math.pow(10, n) - 1];
         num = new char[n];
         start = n - 1;
+        //开启递归，从第0位开始递归
         dfs(0);
         return res;
     }
 
+    //递归构造loop的字符数组全排列
     private void dfs(int x) {
+        //递归推出条件，当前位置等于目标位数时，将num中的结果截取并添加入 res
         if (x == n) {
             String s = String.valueOf(num).substring(start);
             if (!s.equals("0"))
@@ -35,6 +38,7 @@ public class Solution {
             if (i == '9')
                 nine++;
             num[x] = i;
+            //递归构造下一位的全排列
             dfs(x + 1);
         }
         nine--;

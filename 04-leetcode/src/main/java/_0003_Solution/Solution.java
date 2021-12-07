@@ -11,16 +11,17 @@ import java.util.Set;
 public class Solution {
     //利用hashset
     public int lengthOfLongestSubstring(String s) {
-        if (s.length() == 0 || s.length() == 1)
-            return s.length();
-        int length = 0;
+        int left = 0, right = 0, length = 0;
         Set<Character> set = new HashSet<>();
-        int left = 0, right = 0;
         while (right < s.length()) {
-            if (!set.contains(s.charAt(right)))
-                set.add(s.charAt(right++));
-            else
-                set.remove(s.charAt(left++));
+            if (set.contains(s.charAt(right))) {
+                set.remove(s.charAt(left));
+                left++;
+            } else {
+                set.add(s.charAt(right));
+                right++;
+            }
+            //right已经执行了++，所以计算长度时不需要+1
             length = Math.max(length, right - left);
         }
         return length;

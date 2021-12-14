@@ -8,52 +8,47 @@ public class Solution {
 
     //动态规划
     //对于一个回文字符串，在两端各去掉一个字符后，他依然是回文字符串
+    //使用二位数组dp[i][j]，i表示数组头索引，j表示尾部索引，
     public String longestPalindrome(String s) {
-        int len = s.length();
-        if (len < 2) {
+        //若只有一个字符，则直接返回
+        if (s.length() < 2)
             return s;
-        }
 
-        int maxLen = 1;
-        int begin = 0;
-        // dp[i][j] 表示 s[i..j] 是否是回文串
-        boolean[][] dp = new boolean[len][len];
-        // 初始化：所有长度为 1 的子串都是回文串
-        for (int i = 0; i < len; i++) {
+        //用于记录头尾索引之间的字符串是否是回文
+        boolean[][] dp = new boolean[s.length()][s.length()];
+        //所有单个的字符本身就是回文字符串
+        for (int i = 0; i < s.length(); i++) {
             dp[i][i] = true;
         }
-
-        char[] charArray = s.toCharArray();
-        // 递推开始
-        // 先枚举子串长度
-        for (int L = 2; L <= len; L++) {
-            // 枚举左边界，左边界的上限设置可以宽松一些
-            for (int i = 0; i < len; i++) {
-                // 由 L 和 i 可以确定右边界，即 j - i + 1 = L 得
-                int j = L + i - 1;
-                // 如果右边界越界，就可以退出当前循环
-                if (j >= len) {
-                    break;
+        //回文字符串长度至少是1
+        int maxLength = 1;
+        int leftIndex = 0;
+        //枚举所有子字符串长度以及其对应得字串，从长度2开始
+        for (int length = 2; length <= s.length(); length++) {
+            //从左边界开始枚举，左边界的最大值为字符串的长度减去子串的长度+1
+            for (int left = 0; left <= s.length() - length; left++) {
+                //已知左边界，以及字符串长度length，可以确定右边界
+                int right = left + length - 1;
+                if (s.charAt(left) != s.charAt(right))
+                    //若左右边界不相等，则在dp中记录false
+                    dp[left][right] = false;
+                else {
+                    //若左右边界相等，还需分为两种情况考虑
+                    if (right - left < 3)
+                        //若此时子串长度为3，且两边相等，则必定是回文字符串
+                        dp[left][right] = true;
+                    else
+                        //若子串长度大于3且两边相等，则可以通过dp记录的以前的结果判断子串是否是回文
+                        dp[left][right] = dp[left + 1][right - 1];
                 }
 
-                if (charArray[i] != charArray[j]) {
-                    dp[i][j] = false;
-                } else {
-                    if (j - i < 3) {
-                        dp[i][j] = true;
-                    } else {
-                        dp[i][j] = dp[i + 1][j - 1];
-                    }
-                }
-
-                // 只要 dp[i][L] == true 成立，就表示子串 s[i..L] 是回文，此时记录回文长度和起始位置
-                if (dp[i][j] && j - i + 1 > maxLen) {
-                    maxLen = j - i + 1;
-                    begin = i;
+                if (dp[left][right] && right - left + 1 > maxLength) {
+                    leftIndex = left;
+                    maxLength = right - left + 1;
                 }
             }
         }
-        return s.substring(begin, begin + maxLen);
+        return s.substring(leftIndex, leftIndex + maxLength);
     }
 
     //中心扩展算法

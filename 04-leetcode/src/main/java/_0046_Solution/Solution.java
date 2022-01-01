@@ -29,7 +29,7 @@ public class Solution {
             dfs(result, temp, nums, visited);
             visited[i] = 0;
             //回溯时将temp中的当前栈添加的元素去除，即最后一个元素
-            temp.remove(i);
+            temp.remove(temp.size() - 1);
         }
     }
 

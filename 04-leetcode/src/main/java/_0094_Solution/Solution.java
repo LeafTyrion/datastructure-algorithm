@@ -11,7 +11,7 @@ public class Solution {
     //BFS 广度优先搜索
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> result = new ArrayList<>();
-        Deque<TreeNode> deque = new LinkedList<>();
+        Stack<TreeNode> deque = new Stack<>();
         while (root != null || !deque.isEmpty()) {
             while (root != null) {
                 deque.push(root);

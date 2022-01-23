@@ -10,6 +10,8 @@ import java.util.Arrays;
  * 平均时间复杂度：O(n2)
  * 空间复杂度：O(1)
  * 稳定性：稳定
+ *
+ * 比较相邻的元素。如果第一个比第二个大，就交换他们两个。
  */
 public class BubbleSort {
 

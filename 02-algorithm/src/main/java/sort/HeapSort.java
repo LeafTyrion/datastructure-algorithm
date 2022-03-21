@@ -7,15 +7,15 @@ import java.util.Arrays;
  * <p>
  * 堆排序
  * <p>
- * 最坏时间复杂度：O(n2)
+ * 最坏时间复杂度：O(nlogn)
  * <p>
- * 最好时间复杂度：O(n)
+ * 最好时间复杂度：O(nlogn)
  * <p>
- * 平均时间复杂度：O(n2)
+ * 平均时间复杂度：O(nlogn)
  * <p>
  * 空间复杂度：O(1)
  * <p>
- * 稳定性：稳定
+ * 稳定性：不稳定
  * <p>
  * 二叉堆是一个数组，在元素的逻辑关系上可以被看成一个近似的完全二叉树
  * <p>
@@ -30,6 +30,16 @@ public class HeapSort {
         int length = array.length;
         buildMaxHeap(array, length);
 
+        //根据大顶堆的性质可知，i位置的元素一定大于等于2*i和2*i+1
+        //根节点一定是最大的元素
+        for (int i = length - 1; i > 0; i--) {
+            //遍历整个大顶堆
+            //将根节点的元素与数组最后一个未排序的元素进行交换
+            swap(array, 0, i);
+            //然后对剩下的数组从根节点进行重新堆化
+            length--;
+            heapify(array, 0, length);
+        }
 
     }
 
@@ -57,15 +67,16 @@ public class HeapSort {
         //记录当前最大的元素的索引
         int largest = index;
 
-        //left<length 防止越界，如果当前节点比左子节点小
-        if (left < length && array[left] > array[index])
+        //left<length 防止越界，比较出找出三个节点中最大的节点
+        if (left < length && array[left] > array[largest])
             largest = left;
-        if (right < length && array[right] > array[index])
+        if (right < length && array[right] > array[largest])
             largest = right;
         //发生了交换
         if (largest != index) {
             swap(array, largest, index);
-//            heapify();
+            //largest 这个位置的元素被替换成了较小的值，需要重新 heapify
+            heapify(array, largest, length);
         }
     }
 
@@ -84,7 +95,7 @@ public class HeapSort {
     }
 
     public static void main(String[] args) {
-        BubbleSort sort = new BubbleSort();
+        HeapSort sort = new HeapSort();
         int[] array = new int[]{1, 5, 3, 2, 5, 1, 9, 8, 7, 0};
         sort.sort(array);
         System.out.println(Arrays.toString(array));

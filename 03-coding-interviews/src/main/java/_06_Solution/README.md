@@ -11,12 +11,12 @@
 
 ```java
 class Solution {
-    public int[] reversePrint(ListNode head) {
+    public int[] reversePrint(ListNode heap) {
 
         Stack<Integer> stack = new Stack<>();
-        while (head != null) {
-            stack.push(head.val);
-            head = head.next;
+        while (heap != null) {
+            stack.push(heap.val);
+            heap = heap.next;
         }
 
         int size = stack.size();

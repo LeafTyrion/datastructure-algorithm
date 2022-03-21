@@ -19,9 +19,9 @@
  * }
  */
 class Solution {
-    public ListNode reverseList(ListNode head) {
+    public ListNode reverseList(ListNode heap) {
 
-        ListNode currentNode = head;
+        ListNode currentNode = heap;
         ListNode previousNode = null;
 
         while (currentNode != null){

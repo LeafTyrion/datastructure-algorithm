@@ -10,6 +10,37 @@ import java.util.Map;
  * 17. 电话号码的字母组合
  */
 public class Solution {
+
+//    public List<String> letterCombinations(String digits) {
+//        List<String> result = new ArrayList<>();
+//        int length = digits.length();
+//        if (length == 0)
+//            return result;
+//
+//        String[] str = new String[length];
+//        Map<Character, String> map = getMap();
+//        for (int i = 0; i < length; i++) {
+//            str[i] = getMap().get(digits.charAt(i));
+//        }
+//        backTrace(result, str, 0, new StringBuilder());
+//        return result;
+//    }
+//
+//    private void backTrace(List<String> result, String[] str, int index, StringBuilder temp) {
+//        int length = str.length;
+//        if (temp.length() == length)
+//            result.add(temp.toString());
+//        else {
+//            String content = str[index];
+//            for (int i = 0; i < content.length(); i++) {
+//                temp.append(content.charAt(i));
+//                backTrace(result, str, index + 1, temp);
+//                temp.deleteCharAt(index);
+//            }
+//        }
+//    }
+
+//
     public List<String> letterCombinations(String digits) {
         List<String> result = new ArrayList<>();
         if (digits.length() == 0)

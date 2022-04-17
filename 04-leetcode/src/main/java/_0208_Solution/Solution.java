@@ -8,7 +8,6 @@ import java.util.HashSet;
  */
 public class Solution {
 
-
     public static void main(String[] args) {
         Trie trie = new Trie();
         trie.insert("ab");
@@ -26,29 +25,60 @@ public class Solution {
 }
 
 class Trie {
-    HashSet<String> trie = new HashSet<>();
+
+    private Trie[] children;
+    private boolean isEnd;
 
     public Trie() {
+        children = new Trie[26];
+        isEnd = false;
     }
 
     public void insert(String word) {
-        trie.add(word);
+        Trie node = this;
+        for (int i = 0; i < word.length(); i++) {
+            char c = word.charAt(i);
+            int index = c - 'a';
+            if (node.children[index] == null)
+                node.children[index] = new Trie();
+            node = node.children[index];
+        }
+        node.isEnd = true;
     }
 
     public boolean search(String word) {
-        return trie.contains(word);
+
     }
 
     public boolean startsWith(String prefix) {
 
-        for (String s : trie) {
-            if (prefix.length() > s.length())
-                continue;
-            String substring = s.substring(0, prefix.length());
-            if (substring.equals(prefix))
-                return true;
-        }
-        return false;
     }
+
 }
+//class Trie {
+//    HashSet<String> trie = new HashSet<>();
+//
+//    public Trie() {
+//    }
+//
+//    public void insert(String word) {
+//        trie.add(word);
+//    }
+//
+//    public boolean search(String word) {
+//        return trie.contains(word);
+//    }
+//
+//    public boolean startsWith(String prefix) {
+//
+//        for (String s : trie) {
+//            if (prefix.length() > s.length())
+//                continue;
+//            String substring = s.substring(0, prefix.length());
+//            if (substring.equals(prefix))
+//                return true;
+//        }
+//        return false;
+//    }
+//}
 

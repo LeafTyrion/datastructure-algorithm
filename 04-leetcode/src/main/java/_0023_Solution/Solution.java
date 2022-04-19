@@ -5,31 +5,46 @@ package _0023_Solution;
  * 23. 合并K个升序链表
  */
 public class Solution {
+
     public ListNode mergeKLists(ListNode[] lists) {
-        ListNode result = new ListNode();
+        ListNode result = null;
         for (ListNode list : lists) {
-            merge(result, list);
+            if (result == null && list != null) {
+                result = list;
+                continue;
+            }
+            ListNode temp = new ListNode();
+            ListNode p1 = result;
+            ListNode p2 = list;
+            ListNode p = temp;
+            while (p1 != null && p2 != null) {
+                if (p1.val > p2.val) {
+                    p.next = p2;
+                    p2 = p2.next;
+                } else {
+                    p.next = p1;
+                    p1 = p1.next;
+                }
+                p = p.next;
+            }
+            if (p1 == null)
+                p.next = p2;
+            if (p2 == null)
+                p.next = p1;
+            result = temp.next;
         }
-        return result.next;
+        return result;
     }
 
-    public void merge(ListNode master, ListNode branch) {
-        ListNode temp = new ListNode();
-        while (master != null && branch != null) {
-            if (master.val > branch.val) {
-                temp.next = branch;
-                branch = branch.next;
-            } else {
-                temp.next = master;
-                master = master.next;
-            }
-            temp = temp.next;
-        }
-        if (master == null)
-            temp.next = branch;
-        else if (branch == null)
-            temp.next = master;
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        ListNode n1 = new ListNode(2);
+        ListNode n2 = new ListNode(1);
+
+        ListNode[] list = new ListNode[]{n1, n2};
+        solution.mergeKLists(list);
     }
+
 }
 
 

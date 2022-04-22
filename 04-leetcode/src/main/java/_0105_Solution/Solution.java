@@ -9,6 +9,8 @@ import java.util.Map;
  */
 public class Solution {
     //递归
+    //前序遍历用来定位根节点
+    //中序遍历用来定位左右子树
     int[] preorder;
     Map<Integer, Integer> inorder;
 
@@ -23,11 +25,16 @@ public class Solution {
     }
 
     private TreeNode recur(int rootIndex, int leftIndex, int rightIndex) {
+        //若左边界=右边界，则表示当前节点为叶子节点
         if (leftIndex > rightIndex)
             return null;
         TreeNode node = new TreeNode(preorder[rootIndex]);
         int partition = inorder.get(node.val);
+        //对于前序遍历，根节点位置+1 就是左子树的根节点位置
+        //对于中序遍历，左子树的左边界leftIndex，右边界则是根节点的位置-1
         node.left = recur(rootIndex + 1, leftIndex, partition - 1);
+        //对于前序遍历，根节点位置+左子树的长度就是右子树的根节点位置
+        //对于中序遍历，右子树的左边是根节点位置+1，右边界始终是树的大小
         node.right = recur(rootIndex + partition - leftIndex + 1, partition + 1, rightIndex);
         return node;
     }

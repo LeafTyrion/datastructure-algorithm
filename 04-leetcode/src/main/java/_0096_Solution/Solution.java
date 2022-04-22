@@ -9,6 +9,7 @@ import java.util.Map;
  */
 public class Solution {
 
+    //动态规划
 //    public int numTrees(int n) {
 //        int[] G = new int[n + 1];
 //        for (int i = 0; i <= n; i++) {
@@ -22,6 +23,7 @@ public class Solution {
 //        return G[n];
 //    }
 
+    //递归，使用 hashmap 优化
     Map<Integer, Integer> map = new HashMap<>();
 
     public int numTrees(int n) {

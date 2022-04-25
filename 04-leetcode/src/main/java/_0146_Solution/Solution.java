@@ -1,5 +1,6 @@
 package _0146_Solution;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -8,75 +9,99 @@ import java.util.Map;
  */
 
 //自定义的双向链表
-class MyList {
-   private int key;
-   private int value;
-   private MyList pre;
-   private MyList next;
 
-    public MyList() {
+
+class Node {
+    int key;
+    int value;
+    Node pre;
+    Node next;
+
+    public Node() {
     }
 
-    public MyList(int key, int value) {
+    public Node(int key, int value) {
         this.key = key;
         this.value = value;
     }
+}
 
-    //注意，顺序不能乱，引用指向顺序乱了会导致对象丢失
-    private void addToHead(MyList node, MyList head) {
+class LRUCache {
+
+    int capacity;
+    int size;
+    Node head;
+    Node tail;
+    Map<Integer, Node> cache;
+
+    public LRUCache(int capacity) {
+        this.capacity = capacity;
+        this.head = new Node();
+        this.tail = new Node();
+        this.cache = new HashMap<>(capacity);
+        head.next = tail;
+        tail.pre = head;
+    }
+
+    public int get(int key) {
+        if (!cache.containsKey(key))
+            return -1;
+        Node node = cache.get(key);
+        moveToHead(node);
+        return node.value;
+    }
+
+    public void put(int key, int value) {
+        if (cache.containsKey(key)) {
+            Node node = cache.get(key);
+            node.value = value;
+            moveToHead(node);
+        } else {
+            Node node = new Node(key, value);
+            if (size == capacity) {
+                int delKey = removeTailNode();
+                cache.remove(delKey);
+                size--;
+            }
+            cache.put(key, node);
+            addToHead(node);
+            size++;
+        }
+    }
+
+    private int removeTailNode() {
+        Node node = tail.pre;
+        node.pre.next = tail;
+        tail.pre = node.pre;
+        return node.key;
+    }
+
+    private void addToHead(Node node) {
         node.pre = head;
         node.next = head.next;
         head.next.pre = node;
         head.next = node;
     }
 
-    private void removeNode(MyList node) {
-        node.pre.next = node.next;
-        node.next.pre = node.pre;
-    }
-
-    public void moveToHead(MyList node, MyList head) {
-        removeNode(node);
-        addToHead(node, head);
-    }
-
-    private MyList removeTail(MyList tail) {
-        MyList res = tail.pre;
-        removeNode(res);
-        return res;
+    //需要注意不要使用辅助变量
+    private void moveToHead(Node node) {
+         node.pre.next = node.next;
+         node.next.pre = node.pre;
+         addToHead(node);
     }
 }
 
 public class Solution {
-
-
-    class LRUCache {
-
-        private Map<Integer, MyList> cache;
-        private int capacity;
-        private MyList head, tail;
-        private MyList list=new MyList();
-
-        public LRUCache(int capacity) {
-            this.capacity = capacity;
-            head = new MyList();
-            tail = new MyList();
-            head.next = tail;
-            tail.pre = head;
-        }
-
-        public int get(int key) {
-            MyList node=cache.get(key);
-            if(node==null)
-                return -1;
-            list.re
-        }
-
-        public void put(int key, int value) {
-
-        }
-
+    public static void main(String[] args) {
+        LRUCache cache = new LRUCache(2);
+        cache.put(2, 1);
+        cache.put(1, 1);
+        cache.put(2, 3);
+        cache.put(4, 1);
+        cache.get(1);
+        cache.get(2);
     }
+
 
     //利用 linkedHashMap api
 //    class LRUCache {
@@ -88,7 +113,7 @@ public class Solution {
 //            this.cache = new LinkedHashMap<Integer, Integer>(capacity, 0.75f, true) {
 //                @Override
 //                protected boolean removeEldestEntry(Map.Entry<Integer, Integer> eldest) {
-//                    return cache.size() == capacity;
+//                    return cache.size() > capacity;
 //                }
 //            };
 //            this.capacity = capacity;

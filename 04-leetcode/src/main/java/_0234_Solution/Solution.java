@@ -9,7 +9,7 @@ public class Solution {
         ListNode fast = head;
         ListNode slow = head;
         //快慢指针找到链表中点
-        while (fast.next != null && fast.next.next != null) {
+        while (fast != null && fast.next != null) {
             fast = fast.next.next;
             slow = slow.next;
         }

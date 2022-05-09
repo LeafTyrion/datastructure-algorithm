@@ -16,45 +16,43 @@ import java.util.Arrays;
 public class MergeSort {
 
     public void sort(int[] arr) {
-        //对数组进行分组
-        sort(arr, 0, arr.length - 1);
+        //对数组进行分组，读取元素时遵循左闭右开
+        sort(arr, 0, arr.length);
     }
 
+    //对传入的数组进行分组
     private void sort(int[] arr, int left, int right) {
-        //如果区间内只有一个元素，则无需继续分组，直接返回
-        if (left >= right)
+        //当前分组只有一个元素时直接返回
+        if (right - left <= 1)
             return;
-        //以mid 包括 mid 右边为一个区间，mid之后的为一个区间
+        //mid 是向上取整的
         int mid = left + (right - left) / 2;
-        //递归对左右区间进行分组
+        //对当前组进行划分，知道每个组都只有一个元素
         sort(arr, left, mid);
-        sort(arr, mid + 1, right);
-        //对分组的内容进行合并，合并过程中进行排序
+        sort(arr, mid, right);
+        //分组完毕回溯时对两个组进行合并操作
         merge(arr, left, mid, right);
     }
 
     //合并的过程就是把两个排好序的数组合并到一起
     private void merge(int[] arr, int left, int mid, int right) {
-        //用于暂时存放归并后的结果
-        int[] tmp = new int[right - left + 1];
-        int index = 0;//指向临时数组的指针
-        int l = left;//left~mid 为排好序的左区间
-        int r = mid + 1;//mid+1~right 为排好序的右区间
-        while (l <= mid && r <= right) {
-            if (arr[l] <= arr[r])
-                tmp[index++] = arr[l++];
-            else
+        int[] tmp = new int[right - left];
+        int index = 0;
+        int l = left, r = mid;
+        while (l < mid && r < right) {
+            if (arr[l] > arr[r])
                 tmp[index++] = arr[r++];
+            else
+                tmp[index++] = arr[l++];
         }
-        while (l <= mid)
+        while (l < mid)
             tmp[index++] = arr[l++];
-        while (r <= right)
+        while (r < right)
             tmp[index++] = arr[r++];
 
-        //将临时空间中的内容填充进原来的数组中
-        System.arraycopy(tmp, 0, arr, left, tmp.length);
+        //将合并的结果拷贝至以left开头的位置
+        System.arraycopy(tmp, 0, arr,  left, tmp.length);
     }
-
 
     public static void main(String[] args) {
         MergeSort sort = new MergeSort();

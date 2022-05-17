@@ -5,7 +5,7 @@ package _0279_Solution;
  * 279. 完全平方数
  */
 public class Solution {
-    //dp[i]=1+
+    //dp[i]=1+min()1~根i
     public int numSquares(int n) {
         int[] dp = new int[n + 1];
         for (int i = 1; i <= n; i++) {

@@ -30,4 +30,9 @@ public class Solution {
         }
         return l;
     }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        solution.searchRange(new int[]{1}, 0);
+    }
 }

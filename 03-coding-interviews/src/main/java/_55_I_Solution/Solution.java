@@ -14,6 +14,16 @@ public class Solution {
         return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
     }
 
+//    public int maxDepth(TreeNode root) {
+//        return dfs(root);
+//    }
+//
+//    private int dfs(TreeNode root) {
+//        if (root == null)
+//            return 0;
+//        return Math.max(dfs(root.left), dfs(root.right)) + 1;
+//    }
+
     //bfs breath search first 广度优先搜索
 //    public int maxDepth(TreeNode root) {
 //        int result = 0;
